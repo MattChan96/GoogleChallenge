@@ -1,4 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap");
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgb(40, 35, 136);
+  background: radial-gradient(
+    circle,
+    rgba(40, 35, 136, 1) 0%,
+    rgba(36, 42, 148, 1) 57%,
+    rgba(11, 30, 75, 1) 100%
+  );
+  font-size: clamp(10px, 2vw, 20px);
+}
+
+#h1 {
+  font-family: "Bungee Spice", cursive;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+}
+
+#description {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-size: medium;
+  font-family: 'Chakra Petch', sans-serif;
+  color: aliceblue;
+
+}
+
+#searchForm {
+  display: flex;
+  justify-content: center;
+}
+
+#searchBar {
+  width: 400px;
+  height: 20px;
+  padding: 10px 30px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  margin-right: 5px;
+}
+
+#submitBtn {
+  width: 100px;
+  padding: 10px 30px;
+  transition: 0.5s;
+  border-radius: 15px;
+}
+
+#submitBtn:hover {
+    background: var(--clr);
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr)
+}
+
 .card-thumbnail {
-    max-height: 250px;
-    overflow: hidden;
-    }
+  max-height: 250px;
+  overflow: hidden;
+}
