@@ -1,5 +1,7 @@
-let form = document.getElementById('searchForm')
-let foundDiv = document.getElementById('found')
+const form = document.getElementById('searchForm')
+const resultsSection = document.getElementById('results')
+const baseUrl = "https://en.wikipedia.org/w/api.php";
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -11,18 +13,20 @@ form.addEventListener('submit', (e) => {
 
     fetchData(searchTerm)
 })
+
+
 function fetchData(searchTerm) {
-    let url = "https://en.wikipedia.org/w/api.php";
 
     let params = {
         action: "query",
         list: "search",
         srsearch: searchTerm,
         format: "json",
-        srlimit: 10
-    }; // how many search results
+        srlimit: 12
+    }; // srlimit -> select how many search results to return 
 
-    url = url + "?origin=*";
+    let url = baseUrl + "?origin=*";        // to resolve cors cross-origin request issues
+
     Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
     // adds key/value pairs to query like this k=v&k=v&k=v
 
@@ -33,42 +37,98 @@ function fetchData(searchTerm) {
         .catch(function (error) { console.log(`${error.name}:\n${error.message}`); });
 }
 
-function decodeData(foundData) {
+
+async function decodeData(foundData) {
+
+    prepareResultsSection()     // create section in html where resutls will be displayed
+
     for (let foundArticle of foundData.query.search) {
-        // console.log(foundArticle.snippet)
-
+        // console.log(foundData)
         let articleTitle = foundArticle.title
-        let articleText = foundArticle.snippet
-        .replace(/(<([^>]+)>)/gi, "")               // strip html tags from 
-        .slice(0, 130) + "...";                      // truncate text
-        
-        let articleUrl = 'https://en.wikipedia.org/?curid=' + Number(foundArticle.pageid)        //
 
-        generateCard(articleTitle, articleText, articleUrl)
+        let articleText = foundArticle.snippet
+            .replace(/(<([^>]+)>)/gi, "")               // strip html tags from 
+            .slice(0, 130) + "...";                      // truncate text
+
+        let pageID = Number(foundArticle.pageid)
+
+        let articleUrl = 'https://en.wikipedia.org/?curid=' + pageID
+
+        let imgUrl = await getArticleImage(articleTitle, pageID)
+        // console.log(imgUrl)
+
+        generateCard(articleTitle, articleText, articleUrl, imgUrl)
     }
 }
 
+async function getArticleImage(title, pageID) {
+    let url = baseUrl + "?origin=*" + `&action=query&format=json&prop=pageimages&titles=${title}&pithumbsize=260`;        // "?origin=*" to resolve cors cross-origin request issues
+    let imgURL
 
-function generateCard(title, text, url) {
+    let res = await fetch(url)
+    let data = await res.json()
+    try {
+        imgURL = data.query.pages[String(pageID)].thumbnail.source
+        // console.log(data.query.pages[String(pageID)].thumbnail.source)
+    } catch (err) {
+        imgURL = '../img/default.jpg'
+    }
+
+    // console.log(imgURL)
+    return imgURL
+}
+
+function prepareResultsSection() {
+    resultsSection.textContent = ''
+    let containerDiv = document.createElement('div')
+    let rowDiv = document.createElement('div')
+    let colDiv = document.createElement('div')
+    let h2 = document.createElement('h2')
+
+    containerDiv.className = "container"
+    rowDiv.className = "row"
+    rowDiv.id = "found"
+    colDiv.className = "col-12"
+    h2.classList.add("mb-3", "text-danger")
+    h2.textContent = "Your results: "
+    colDiv.appendChild(h2)
+    rowDiv.appendChild(colDiv)
+    containerDiv.appendChild(rowDiv)
+    resultsSection.appendChild(containerDiv)
+    /*
+        resultsSection.innerHTML = `
+        <div class="container">
+            <div class="row" id="found">
+                <div class="col-12">
+                    <h2 class="mb-3 text-danger">Your results: </h2>
+                </div>
+            </div>
+        </div>
+        `
+    */
+}
+
+
+function generateCard(title, text, url, img) {
+    let foundDiv = document.getElementById('found')
     // console.log(title, text, url)
 
     if (!title || !text || !url) {
         foundDiv.textContent = 'No results found'
     } else {
         foundDiv.innerHTML += `
-        <div class="col-md-6 col-lg-4">
+        <div class="col-sm-12 col-md-6 col-lg-4" >
             <div class="card my-3">
                 <div class="card-thumbnail">
-                    <img src="./img/default.jpg" class="img-fluid" alt="thumbnail">
+                    <img src="${img}" class="img-fluid" alt="${title}">
                 </div>
                 <div class="card-body">
-                    <h3 class="card-title"><a href="#" class="text-secondary">${title}</a></h3>
+                    <h3 class="card-title fs-4">${title}</h3>
                     <p class="card-text">${text}</p>
-                    <a href="${url}" target="blank" class="btn btn-danger">Read More</a>
+                    <a href="${url}" target="blank" class="btn btn-info link-btn">Read More</a>
                 </div>
             </div>
-        </div>
-        
+        </div >
         `
     }
 }
