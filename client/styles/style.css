@@ -7,11 +7,11 @@ body {
   justify-content: center;
   flex-direction: column;
   background: rgb(40, 35, 136);
-  background: radial-gradient(
-    circle,
-    rgba(40, 35, 136, 1) 0%,
-    rgba(36, 42, 148, 1) 57%,
-    rgba(11, 30, 75, 1) 100%
+  background: linear-gradient(
+    90deg,
+    rgba(161, 60, 228, 1) 0%,
+    rgba(177, 21, 21, 1) 51%,
+    rgba(242, 161, 46, 1) 100%
   );
   font-size: clamp(10px, 2vw, 20px);
 }
@@ -21,6 +21,10 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 250px;
+  border: solid 5px black;
+  padding: 10px 30px;
+  border-radius: 30px;
+  background-color: gray;
 }
 
 #description {
@@ -28,9 +32,8 @@ body {
   justify-content: center;
   margin-bottom: 40px;
   font-size: medium;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   color: aliceblue;
-
 }
 
 #searchForm {
@@ -55,9 +58,9 @@ body {
 }
 
 #submitBtn:hover {
-    background: var(--clr);
-    letter-spacing: 0.25em;
-    box-shadow: 0 0 35px var(--clr)
+  background: var(--clr);
+  letter-spacing: 0.25em;
+  box-shadow: 0 0 35px var(--clr);
 }
 
 .card-thumbnail {

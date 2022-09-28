@@ -6,11 +6,11 @@ form.addEventListener('submit', (e) => {
 
     let formData = new FormData(form)
     let searchTerm = formData.get('searchTerm')
-
     form.reset()
 
     fetchData(searchTerm)
 })
+
 function fetchData(searchTerm) {
     let url = "https://en.wikipedia.org/w/api.php";
 
