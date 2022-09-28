@@ -23,14 +23,13 @@
 
   <body>
     <div id="h1">
-      <h1>Wiki search</h1>
+      <h1><span class="auto-type"></span></h1>
     </div>
 
     <br />
     <div id="description">
       <h3>
-        This is a basic experiment based on Wikipedia's API. It displays the
-        first 10 results for user-generated search term.
+        <span id="h3content"></span>
       </h3>
     </div>
 
@@ -43,7 +42,7 @@
           id="searchTerm"
           name="searchTerm"
         />
-        <input id="submitBtn" style="--clr:#1e9bff" type="submit" value="GO!" />
+        <input id="submitBtn" style="--clr:#F48D06" type="submit" value="GO!" />
       </form>
     </div>
 
@@ -61,12 +60,30 @@
         </div>
       </div>
     </section>
+
+    <script>
+        <link
+          rel="stylesheet"
+          href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css"
+        />;
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <script>
+        let typed = new Typed(".auto-type", {
+            strings: ["Google", "Fake Google"],
+            typeSpeed: 100,
+            backSpeed: 100,
+            loop: false
+        })
+
+        let typed2 = new Typed("#h3content", {
+            strings: ["This is a basic experiment based on Wikipedia's API. It displays the first 10 results for user-generated search term."],
+            startDelay: 3500,
+            typeSpeed: 25,
+            loop: false,
+        })
+      </script>
   </body>
 </html>
 
-<script>
-  <link
-    rel="stylesheet"
-    href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css"
-  />;
-</script>
+
