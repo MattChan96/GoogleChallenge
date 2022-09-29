@@ -23,8 +23,8 @@ Project Description
 
 Overview
 -----------------
-    1. Once a search term has been entered and the form submitted the app will fetch data for the most relevant 
-results from wikipedia's API (limited to 12 results).
+    1. Once a search term has been entered and the form submitted the app will fetch data for the most relevant  
+    results from wikipedia's API (limited to 12 results).
     2. Then the required data is being extracted for each of the objects contained in the returned JSON:
        - articleTitle
        - articleText
