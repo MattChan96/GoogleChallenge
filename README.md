@@ -13,9 +13,8 @@ Project Description
     The concept is to obtain user input and to extract the top 12 results from Wikipedia's API for the entered search term.  
     Then for each of the articles the app will send a separate request to the API and the relevant article image will be returned,  
     if one is available.   
-    Then from the retrieved data for each of the items an individual div card will be created, containing the article  
-title, excerpt from the article text, the main image from the article (or default if none is found) and a link to the  
-relevant Wikipedia page. The cards will be displayed as a responsive grid section on the main page.  
+    Then from the retrieved data for each of the items an individual div card will be created, containing the article title, excerpt from the article text, the main image from the article (or default if none is found) and a link to the relevant Wikipedia page.  
+    The cards will be displayed as a responsive grid section on the main page.  
     The picture fetching/display could be considered as (some sort of) business case for this app (apart from its  
 educatinal benefit for its creators) - a normal Wikipedia search will return just links to the articles with no visual  
 representation.
