@@ -50,9 +50,26 @@ body {
     padding: 10px 30px;
     transition: 0.5s;
     border-radius: 15px;
+    margin-right: 5px;
+    text-align: center;
 }
 
 #submitBtn:hover {
+    background: var(--clr);
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr)
+}
+
+#submitBtn2 {
+    width: 150px;
+    padding: 10px 30px;
+    transition: 0.5s;
+    border-radius: 15px;
+    text-align: center;
+    display: none;
+}
+
+#submitBtn2:hover {
     background: var(--clr);
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px var(--clr)

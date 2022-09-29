@@ -1,21 +1,55 @@
 const form = document.getElementById('searchForm')
+const submitBtn = document.querySelector('#submitBtn')
+const randBtn = document.querySelector('#submitBtn2');
 const resultsSection = document.getElementById('results')
 const baseUrl = "https://en.wikipedia.org/w/api.php";
 
+let keyword = ""
 
-form.addEventListener('submit', (e) => {
+submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
 
     let formData = new FormData(form)
     let searchTerm = formData.get('searchTerm')
-
-    form.reset()
+    keyword = searchTerm;
+    // form.reset()
 
     fetchData(searchTerm)
+
+    randBtn.style.display = "initial"
 })
 
+randBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    
+    form.reset()
 
-function fetchData(searchTerm) {
+    fetchData(keyword, false)
+})
+
+async function decodeDataRandom(foundData) {
+
+    prepareResultsSection()     // create section in html where resutls will be displayed
+
+    const foundArticle  = foundData.query.search[Math.floor(Math.random()*foundData.query.search.length)];
+
+        let articleTitle = foundArticle.title
+
+        let articleText = foundArticle.snippet
+            .replace(/(<([^>]+)>)/gi, "")               // strip html tags from 
+            .slice(0, 130) + "...";                      // truncate text
+
+        let pageID = Number(foundArticle.pageid)
+
+        let articleUrl = 'https://en.wikipedia.org/?curid=' + pageID
+
+        let imgUrl = await getArticleImage(articleTitle, pageID)
+        // console.log(imgUrl)
+
+        generateCard(articleTitle, articleText, articleUrl, imgUrl)
+    }
+
+function fetchData(searchTerm, flag=true) {
 
     let params = {
         action: "query",
@@ -32,7 +66,9 @@ function fetchData(searchTerm) {
 
     fetch(url)
         .then(response => response.json())
-        .then(decodeData)
+        .then(x=> {
+            flag === true ? decodeData(x) : decodeDataRandom(x);
+        })
 
         .catch(function (error) { console.log(`${error.name}:\n${error.message}`); });
 }
@@ -132,3 +168,5 @@ function generateCard(title, text, url, img) {
         `
     }
 }
+
+
