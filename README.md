@@ -2,6 +2,11 @@ Project Title
 -----------------
     Wiki Experiment
 
+NB
+-----------------
+    - No dependencies required
+    - Just open index.html in live browser
+
 Project Description
 -----------------
     This is a student project developed by Matthieu Chan (MattChan96 @ Github) and Kalin Karaliev (karalkal @ Github).
@@ -24,7 +29,4 @@ Overview
 Wins
 -----------------
     Managed to gain deeper undestanding of how the FE and BE interract with one another.
-    Found the experience of scraping data, albeit at such a basic level, very valuable and fun. 
-
-- No dependencies required
-- Just open index.html in live browser
+    Found the experience of scraping data, albeit at such a basic level, very valuable and fun.
