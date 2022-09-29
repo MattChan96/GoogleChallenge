@@ -19,3 +19,5 @@ Wins
     Managed to gain deeper undestanding of how the FE and BE interract with one another.
     Found the experience of scraping data, albeit at such a basic level, very valuable and worth exploring further  
 
+- No dependencies required
+- Just open index.html in live browser
