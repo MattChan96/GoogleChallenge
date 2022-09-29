@@ -10,8 +10,8 @@ N.B.
 Project Description
 -----------------
     This is a student project developed by Matthieu Chan (MattChan96 @ Github) and Kalin Karaliev (karalkal @ Github).  
-    The concept is to obtain user input and to extract the top 12 results from Wikipedia's API 
-for the entered search term.   
+    The concept is to obtain user input and to extract the top 12 results from Wikipedia's API  
+for the entered search term.  
     Then for each of the articles the app will send a separate request to the API and the relevant article image 
 will be returned, if one is available.   
     Then from the retrieved data for each of the items an individual div card will be created, containing the article 
