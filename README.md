@@ -13,7 +13,7 @@ Project Description
     The concept is to obtain user input and to extract the top 12 results from Wikipedia's API for the entered search term.  
     Then for each of the articles the app will send a separate request to the API and the relevant article image  
     will be returned, if one is available.   
-    Then from the retrieved data for each of the items an individual div card will be created, containing the article title,  
+    From the retrieved data for each of the items an individual div card will be created, containing the article title,  
     excerpt from the article text, the main image from the article (or default if none is found) and a link  
     to the relevant Wikipedia page.  
     The cards will be displayed as a responsive grid section on the main page.  
@@ -37,5 +37,5 @@ Overview
 
 Wins
 -----------------
-    Managed to gain deeper undestanding of how the FE and BE interract with one another.
-    Found the experience of scraping data, albeit at such a basic level, very valuable and fun.
+    - Managed to gain deeper undestanding of the request/response cycle of a popular REST APIs.
+    - Found the process of scraping data, albeit at such a basic level, a very valuable and fun experience.
