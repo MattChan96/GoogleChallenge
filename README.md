@@ -30,9 +30,9 @@ Overview
        - articleText
        - pageID
        - articleUrl
-    3. As the link to the article image is not included in the returned result we perform a separate get request 
-to Wikipedia's API for each of the entries. If the request returns a result (the url of the image) the value is assigned 
-to the imgURL property or, if not, a default image will be linked.
+    3. As the link to the article image is not included in the returned result we perform a separate get request  
+    to Wikipedia's API for each of the entries. If the request returns a result (the url of the image)  
+    the value is assigned to the imgURL property or, if not, a default image will be linked.
     4. The data is then being rendered in a section containing separate cards for each of the entries.
 
 Wins
