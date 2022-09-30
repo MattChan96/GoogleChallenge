@@ -45,6 +45,11 @@ body {
     margin-right: 5px;
 }
 
+#searchBar:hover {
+    box-shadow: 5px 5px 5px orange;
+    transition: 0.3s;
+}
+
 #submitBtn {
     width: 100px;
     padding: 10px 30px;
