@@ -67,12 +67,23 @@ body {
     border-radius: 15px;
     text-align: center;
     display: none;
+
 }
 
 #submitBtn2:hover {
     background: var(--clr);
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px var(--clr)
+}
+
+section {
+    border-radius: 20px;
+    width: 80%;
+}
+
+#results {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: bolder;
 }
 
 .card-thumbnail {
@@ -86,10 +97,6 @@ body {
     width: 100%;
     height: 100%;
 
-}
-
-card-body {
-    height: 31vh;
 }
 
 .card-body .card-title {

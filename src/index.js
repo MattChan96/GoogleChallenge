@@ -168,5 +168,3 @@ function generateCard(title, text, url, img) {
         `
     }
 }
-
-
